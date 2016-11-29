@@ -66,6 +66,17 @@
         <!-- /.container-fluid -->
     </nav>
 
+	<div class="header-video">
+    <img src="images/masthead.jpg"
+         class="header-video__media"
+         data-video-URL="https://www.youtube.com/embed/Scxs7L0vhZ4"
+         data-teaser="video/Bygone Brewery Trailer"
+         data-video-width="560"
+         data-video-height="315">
+    <a href="https://www.youtube.com/embed/Scxs7L0vhZ4" class="header-video__play-trigger" id="header-video__play-trigger">Play video</a>
+    <button type="button" class="header-video__close-trigger" id="header-video__close-trigger">Close video</button>
+  </div>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -85,11 +96,14 @@
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
         <div class="container">
+
+
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2>Portfolio</h2>
                     <hr class="star-primary">
                 </div>
+
             </div>
             <div class="row">
                 <div class="col-sm-4 portfolio-item">
@@ -167,7 +181,8 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <p>Paragraph 1</p>
+                    <p>Hi, I'm a Game Programmer currently based in Bournemouth, fininishing my degree in
+                      Games Programming at Bournemouth University</p>
                 </div>
                 <div class="col-lg-4">
                     <p>Paragraph 2</p>
@@ -243,25 +258,19 @@
                 <div class="row">
                     <div class="footer-col col-md-4">
                         <h3>Location</h3>
-                        <p>Bournemouth</p>
+                        <p>Bournemouth, United Kingdom</p>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>
                         <ul class="list-inline">
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                            </li>
-                            <li>
                                 <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
                             </li>
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-youtube"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -529,6 +538,21 @@
 
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
+	<script src="js/modernizr.js"></script>
+	<script src="js/script.js"></script>
+
+	<script>
+  $(document).ready(function() {
+    $('.header-video').each(function(i, elem) {
+        headerVideo = new HeaderVideo({
+          element: elem,
+          media: '.header-video__media',
+          playTrigger: '.header-video__play-trigger',
+          closeTrigger: '.header-video__close-trigger'
+        });
+    });
+  });
+</script>
 
 </body>
 
