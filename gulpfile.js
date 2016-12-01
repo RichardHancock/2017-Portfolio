@@ -61,6 +61,12 @@ gulp.task('copy', function() {
 	gulp.src(['node_modules/mobile-detect/mobile-detect.min.js', 'node_modules/mobile-detect/mobile-detect.js'])
         .pipe(gulp.dest('vendor/mobile-detect'))
 
+	gulp.src(['node_modules/slippry/dist/*', 'node_modules/slippry/images'])
+        .pipe(gulp.dest('vendor/slippry'))
+
+	gulp.src(['node_modules/slippry/images/*'])
+        .pipe(gulp.dest('vendor/slippry/images'))
+
     gulp.src([
             'node_modules/font-awesome/**',
             '!node_modules/font-awesome/**/*.map',
