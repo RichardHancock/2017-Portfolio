@@ -61,8 +61,11 @@ HeaderVideo.prototype.init = function(settings) {
     this.setFluidContainer();
     this.bindUIActions();
 
-    if(this.videoDetails.teaser && Modernizr.video && !Modernizr.touch) {
+    if(this.videoDetails.teaser && Modernizr.video ) { //&& !Modernizr.touch
+		console.log("Supported");
         this.appendTeaserVideo();
+    } else {
+    	console.log("Not Supported");
     }
 };
 

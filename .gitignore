@@ -2,3 +2,4 @@ node_modules
 css
 vendor
 js/freelancer.min.js
+/npm-debug.log
