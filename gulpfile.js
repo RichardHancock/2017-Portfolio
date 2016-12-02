@@ -31,16 +31,22 @@ gulp.task('less', function() {
 
 //Images
 gulp.task('image', function () {
-   gulp.src(["img/**/*", "!**/Thumbs.db", "!**/*.psd"])
+   return gulp.src(["img/**/*", "!**/Thumbs.db", "!**/*.psd"])
        .pipe(imagemin())
-       .pipe(gulp.dest("dist/img"));
+       .pipe(gulp.dest("dist/img"))
+       .pipe(browserSync.reload({
+           stream: true
+       }));
 });
 
 //HTML
 gulp.task('minify-html', function() {
   return gulp.src('*.html')
     .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist'))
+    .pipe(browserSync.reload({
+        stream: true
+    }));
 });
 
 // Minify compiled CSS
@@ -61,11 +67,13 @@ gulp.task('minify-js', function() {
         .pipe(header(banner, { pkg: pkg }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('js'))
-        .pipe(browserSync.reload({
-            stream: true
-        }))
 
-    gulp.src(['!js/*.min.js', '!js/freelancer.js', "js/*.js"])
+    gulp.src(['!vendor/jquery-easing/*.min.js', 'vendor/jquery-easing/*.js'])
+        .pipe(uglify())
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('vendor/jquery-easing'))
+
+     gulp.src(['!js/*.min.js', '!js/freelancer.js', "js/*.js"])
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('js'))
@@ -85,6 +93,9 @@ gulp.task('copy', function() {
 	gulp.src(['node_modules/mobile-detect/mobile-detect.min.js', 'node_modules/mobile-detect/mobile-detect.js'])
         .pipe(gulp.dest('vendor/mobile-detect'))
 
+  gulp.src(['node_modules/jquery.easing/jquery.easing.1.3.js'])
+        .pipe(gulp.dest('vendor/jquery-easing'))
+
 	gulp.src(['node_modules/slippry/dist/*', 'node_modules/slippry/images'])
         .pipe(gulp.dest('vendor/slippry'))
 
@@ -103,7 +114,7 @@ gulp.task('copy', function() {
 })
 
 // Run everything
-gulp.task('default', ['less', 'minify-css', 'minify-js', 'copy']);
+gulp.task('default', ['copy', 'less', 'minify-html', 'minify-css', 'minify-js']);
 
 // Configure the browserSync task
 gulp.task('browserSync', function() {
@@ -115,11 +126,12 @@ gulp.task('browserSync', function() {
 })
 
 // Dev task with browserSync
-gulp.task('dev', ['browserSync', 'less', 'minify-css', 'minify-js'], function() {
+gulp.task('dev', ['browserSync', 'less', 'image', 'minify-html', 'minify-css', 'minify-js'], function() {
     gulp.watch('less/*.less', ['less']);
     gulp.watch('css/*.css', ['minify-css']);
     gulp.watch('js/*.js', ['minify-js']);
+    gulp.watch('img/**/*', ['image']);
     // Reloads the browser whenever HTML or JS files change
-    gulp.watch('*.html', browserSync.reload);
+    gulp.watch('*.html', ['minify-html', browserSync.reload]);
     gulp.watch('js/**/*.js', browserSync.reload);
 });
