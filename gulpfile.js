@@ -5,6 +5,8 @@ var header = require('gulp-header');
 var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
+var htmlmin = require('gulp-htmlmin')
+const imagemin = require('gulp-imagemin');
 var pkg = require('./package.json');
 
 // Set the banner content
@@ -27,6 +29,20 @@ gulp.task('less', function() {
         }))
 });
 
+//Images
+gulp.task('image', function () {
+   gulp.src(["img/**/*", "!**/Thumbs.db", "!**/*.psd"])
+       .pipe(imagemin())
+       .pipe(gulp.dest("dist/img"));
+});
+
+//HTML
+gulp.task('minify-html', function() {
+  return gulp.src('*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('dist'));
+});
+
 // Minify compiled CSS
 gulp.task('minify-css', ['less'], function() {
     return gulp.src('css/freelancer.css')
@@ -40,9 +56,17 @@ gulp.task('minify-css', ['less'], function() {
 
 // Minify JS
 gulp.task('minify-js', function() {
-    return gulp.src('js/freelancer.js')
+    gulp.src('js/freelancer.js')
         .pipe(uglify())
         .pipe(header(banner, { pkg: pkg }))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('js'))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
+
+    gulp.src('!js/*.min.js', '!js/freelancer.js', "js/*.js")
+        .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('js'))
         .pipe(browserSync.reload({

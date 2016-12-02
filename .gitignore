@@ -3,3 +3,4 @@ css
 vendor
 js/freelancer.min.js
 /npm-debug.log
+/dist
