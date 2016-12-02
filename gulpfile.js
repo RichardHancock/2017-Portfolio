@@ -65,7 +65,7 @@ gulp.task('minify-js', function() {
             stream: true
         }))
 
-    gulp.src('!js/*.min.js', '!js/freelancer.js', "js/*.js")
+    gulp.src(['!js/*.min.js', '!js/freelancer.js', "js/*.js"])
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('js'))
