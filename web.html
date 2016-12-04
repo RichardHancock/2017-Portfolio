@@ -340,10 +340,11 @@
 	<script src="js/freelancer.min.js"></script>
 	<script src="js/modernizr.min.js"></script>
 	<script src="vendor/slippry/slippry.min.js"></script>
+	<script src="vendor/jquery-touchswipe/jquery.touchSwipe.min.js"></script>
 	<script src="js/script.min.js"></script>
 
 	<script>
-	jQuery('#MinecraftSlider').slippry({
+	var minecraftSlider = jQuery('#MinecraftSlider').slippry({
 		// general elements & wrapper
 		slippryWrapper: '<div class="sy-box portfolio-slider" />', // wrapper to wrap everything, including pager
 
@@ -351,9 +352,7 @@
 		adaptiveHeight: false, // height of the sliders adapts to current slide
 		start: '1', // num (starting from 1), random
 		loop: true, // first -> last & last -> first arrows
-		captionsSrc: 'li',
 		captions: 'false', // Position: overlay, below, custom, false
-		captionsEl: '.external-captions',
 
 		// transitions
 		transition: 'fade', // fade, horizontal, kenburns, false
@@ -362,10 +361,11 @@
 
 		// slideshow
 		auto: true,
-		autoHover: true
+		autoHover: true,
+		transition: 'horizontal'
 	});
 
-	jQuery('#HabFacesSlider').slippry({
+	var habfacesSlider = jQuery('#HabFacesSlider').slippry({
 		// general elements & wrapper
 		slippryWrapper: '<div class="sy-box portfolio-slider" />', // wrapper to wrap everything, including pager
 
@@ -373,9 +373,7 @@
 		adaptiveHeight: false, // height of the sliders adapts to current slide
 		start: '1', // num (starting from 1), random
 		loop: true, // first -> last & last -> first arrows
-		captionsSrc: 'li',
 		captions: 'false', // Position: overlay, below, custom, false
-		captionsEl: '.external-captions',
 
 		// transitions
 		transition: 'fade', // fade, horizontal, kenburns, false
@@ -384,10 +382,11 @@
 
 		// slideshow
 		auto: true,
-		autoHover: true
+		autoHover: true,
+		transition: 'horizontal'
 	});
 
-	jQuery('#WTFSlider').slippry({
+	var wtfSlider = jQuery('#WTFSlider').slippry({
 		// general elements & wrapper
 		slippryWrapper: '<div class="sy-box portfolio-slider" />', // wrapper to wrap everything, including pager
 
@@ -395,9 +394,7 @@
 		adaptiveHeight: false, // height of the sliders adapts to current slide
 		start: '1', // num (starting from 1), random
 		loop: true, // first -> last & last -> first arrows
-		captionsSrc: 'li',
 		captions: 'false', // Position: overlay, below, custom, false
-		captionsEl: '.external-captions',
 
 		// transitions
 		transition: 'fade', // fade, horizontal, kenburns, false
@@ -406,8 +403,73 @@
 
 		// slideshow
 		auto: true,
-		autoHover: true
+		autoHover: true,
+		transition: 'horizontal'
 	});
+
+$(document).ready(function() {
+	//Swipe Support
+	//Minecraft
+	$("#MinecraftSlider").swipe( {
+		//Generic swipe handler for all directions
+		swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+			if (direction == "left")
+			{
+				minecraftSlider.goToPrevSlide();
+			}
+			else if (direction == "right")
+			{
+				minecraftSlider.goToNextSlide();
+			}
+
+		},
+		//Default is 75px, set to 0 for demo so any distance triggers swipe
+	   threshold: 5,
+	   allowPageScroll:"vertical",
+	   excludedElements: ".noSwipe"
+   	});
+
+	//HabFaces
+	$("#HabFacesSlider").swipe( {
+		//Generic swipe handler for all directions
+		swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+			if (direction == "left")
+			{
+				habfacesSlider.goToPrevSlide();
+			}
+			else if (direction == "right")
+			{
+				habfacesSlider.goToNextSlide();
+			}
+
+		},
+		//Default is 75px, set to 0 for demo so any distance triggers swipe
+	   threshold: 5,
+	   allowPageScroll:"vertical",
+	   excludedElements: ".noSwipe"
+	});
+
+	//WTF
+	$("#WTFSlider").swipe( {
+		//Generic swipe handler for all directions
+		swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+			if (direction == "left")
+			{
+				wtfSlider.goToPrevSlide();
+			}
+			else if (direction == "right")
+			{
+				wtfSlider.goToNextSlide();
+			}
+
+		},
+		//Default is 75px, set to 0 for demo so any distance triggers swipe
+	   threshold: 5,
+	   allowPageScroll:"vertical",
+	   excludedElements: ".noSwipe"
+	});
+});
+
 	</script>
 
 	<script>

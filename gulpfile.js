@@ -90,9 +90,6 @@ gulp.task('copy', function() {
     gulp.src(['node_modules/jquery/dist/jquery.js', 'node_modules/jquery/dist/jquery.min.js'])
         .pipe(gulp.dest('vendor/jquery'))
 
-	gulp.src(['node_modules/mobile-detect/mobile-detect.min.js', 'node_modules/mobile-detect/mobile-detect.js'])
-        .pipe(gulp.dest('vendor/mobile-detect'))
-
   gulp.src(['node_modules/jquery.easing/jquery.easing.1.3.js'])
         .pipe(gulp.dest('vendor/jquery-easing'))
 
@@ -101,6 +98,9 @@ gulp.task('copy', function() {
 
 	gulp.src(['node_modules/slippry/images/*'])
         .pipe(gulp.dest('vendor/slippry/images'))
+
+	gulp.src(['node_modules/jquery-touchswipe/*.js'])
+        .pipe(gulp.dest('vendor/jquery-touchswipe'))
 
     gulp.src([
             'node_modules/font-awesome/**',
