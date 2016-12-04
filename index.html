@@ -67,15 +67,6 @@
         <!-- /.container-fluid -->
     </nav>
 
-	<div class="header-video">
-    <img src="img/masthead.jpg"
-         class="header-video__media"
-         data-video-URL="https://www.youtube.com/embed/Scxs7L0vhZ4"
-         data-teaser="video/Bygone Brewery Trailer"
-         data-video-width="560"
-         data-video-height="315">
-  </div>
-
     <!-- Header -->
     <header>
         <div class="container">
@@ -219,36 +210,40 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>
-						Hi, I'm a Game Programmer currently based in Bournemouth, finishing my degree in
-                      	Games Programming at Bournemouth University.
-						I achieved a 1st in my first and second years at university, and I am now completing my final year and dissertation.
-				  	</p>
-					<p>
-						I have been playing video game since I was very young, starting with a SNES and Megadrive moving up to Gameboy, PS2 and
-						the Xbox 360. However, I am mostly a PC gamer as I enjoy the performance and experience compared to consoles.
-						I enjoy most RPG, Sandbox and Space games such as: EVE Online, Elite Dangerous, Factorio and Garry's Mod to name a few
-						current favourites.
-					</p>
-					<p>
-						My biggest hobby aside from gaming is computers, ever since I was a child I have always been using, building
-						and repairing computers. I have built my own internal gigabit network with a home server connected, so have
-						a reasonable understanding of networking technologies. I also have run some game servers, web servers and
-						general cloud servers so I am also proficient in Linux and command line systems.
-					</p>
-					<p>
-						During school I started learning how to code in Visual Basic during my free time. I made a few simple games in this language
-						before moving to Java and Python. I then began to learn basic web technologies and started making websites, a few for actual
-						clients.<br>
-						Please read my CV for a more detailed breakdown of my skills.
-					</p>
-					<h3>My Dissertation</h3>
-					<p>
-						My dissertation involves implementing a web based open-source companion app that connects to new and existing games to provide a controller or other interface. A similar proprietary system is used by Jackbox.tv and companion apps that some big developers use with their games. A web based system allows a developer to create one app for the majority of platforms, removing one of the biggest development costs.
-					</p>
+					<div class="aboutInner">
+	                    <p>
+							Hi, I'm a Game Programmer currently based in Bournemouth, finishing my degree in
+	                      	Games Programming at Bournemouth University.
+							I achieved a 1st in my first and second years at university, and I am now completing my final year and dissertation.
+					  	</p>
+						<p>
+							I have been playing video game since I was very young, starting with a SNES and Megadrive moving up to Gameboy, PS2 and
+							the Xbox 360. However, I am mostly a PC gamer as I enjoy the performance and experience compared to consoles.
+							I enjoy most RPG, Sandbox and Space games such as: EVE Online, Elite Dangerous, Factorio and Garry's Mod to name a few
+							current favourites.
+						</p>
+						<p>
+							My biggest hobby aside from gaming is computers, ever since I was a child I have always been using, building
+							and repairing computers. I have built my own internal gigabit network with a home server connected, so have
+							a reasonable understanding of networking technologies. I also have run some game servers, web servers and
+							general cloud servers so I am also proficient in Linux and command line systems.
+						</p>
+						<p>
+							During school I started learning how to code in Visual Basic during my free time. I made a few simple games in this language
+							before moving to Java and Python. I then began to learn basic web technologies and started making websites, a few for actual
+							clients.<br>
+							Please read my CV for a more detailed breakdown of my skills.
+						</p>
+						<h3>My Dissertation</h3>
+						<p>
+							My dissertation involves implementing a web based open-source companion app that connects to new and existing games to provide a controller or other interface.
+							A similar proprietary system is used by Jackbox.tv and companion apps that some big developers use with their games.
+							A web based system allows a developer to create one app for the majority of platforms, removing one of the biggest development costs.
+						</p>
+					</div>
                 </div>
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <a href="cv.pdf" target="_blank" class="btn btn-lg btn-outline">
+                    <a href="Richard%20Hancock%20CV.pdf" target="_blank" class="btn btn-lg btn-outline">
                         <i class="fa fa-download"></i> Download CV
                     </a>
                 </div>
@@ -267,7 +262,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <h4>Contact email: me@richardhancock.co.uk</h4>
+                    <h4 class="notAllCaps">Contact email: <a href="mailto:me@richardhancock.co.uk">me@richardhancock.co.uk</a></h4>
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
                     <form name="sentMessage" id="contactForm" novalidate>
@@ -324,7 +319,7 @@
                                 <a href="https://github.com/RichardHancock" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
                             </li>
                             <li>
-                                <a href="http://www.youtube.com/user/SpaceCrazyProduction" class="btn-social btn-outline"><i class="fa fa-fw fa-youtube"></i></a>
+                                <a href="http://www.youtube.com/c/RichardhancockUk0" class="btn-social btn-outline"><i class="fa fa-fw fa-youtube"></i></a>
                             </li>
                             <li>
                                 <a href="mailto:me@richardhancock.co.uk" class="btn-social btn-outline"><i class="fa fa-fw fa-envelope-o"></i></a>
@@ -372,26 +367,10 @@
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
 	  <script src="js/modernizr.min.js"></script>
-	  <script src="vendor/mobile-detect/mobile-detect.min.js"></script>
 	  <script src="js/script.min.js"></script>
 
 	<script>
 
-	var md = new MobileDetect(window.navigator.userAgent);
-
-	if (!md.mobile() && !md.tablet())
-	{
-		$(document).ready(function() {
-			$('.header-video').each(function(i, elem) {
-		    	headerVideo = new HeaderVideo({
-		      		element: elem,
-		      		media: '.header-video__media',
-		      		playTrigger: '.header-video__play-trigger',
-		      		closeTrigger: '.header-video__close-trigger'
-		    	});
-			});
-		});
-	}
 	</script>
 
 	<script>
