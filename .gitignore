@@ -4,3 +4,6 @@ vendor
 /npm-debug.log
 /dist
 /js/*.min.js
+img/Thumbs\.db
+
+img/portfolio/Thumbs\.db
